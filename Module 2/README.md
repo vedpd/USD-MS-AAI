@@ -1,5 +1,5 @@
 # USD-MS-AAI
-# Module 2 – Supervised Learning
+# Module 2 – Supervised Learning - Symptom to Disease: Multi class classification (NLP model)
 
 This folder contains project code for **Module 2** of the M.S. in Applied Artificial Intelligence (AAI) course **AAI500**.
 
