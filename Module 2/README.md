@@ -4,7 +4,7 @@
 This folder contains project code for Module 2.
 
 ## Contents
--  Data foldder : to Host the Data
+-  Data folder : to Host the Data
 - Modelling folder : to host all the ipython notebooks
 
 ## Data 
