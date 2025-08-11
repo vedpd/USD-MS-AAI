@@ -7,6 +7,7 @@ This folder contains project code for **Module 2** of the M.S. in Applied Artifi
 - **Data/** – Hosts the dataset
 - **Modelling/** – Hosts all the Jupyter notebooks
 - **Visualizations/** – Contains output plots and figures
+- **Reports/**– Contains project reports and slides
 
 ## 📊 Data
 - Data reference: [Kaggle – Symptom-Based Disease Labeling Dataset](https://www.kaggle.com/datasets/krish0202/symptom-based-disease-labeling-dataset/data)
@@ -25,9 +26,29 @@ It focuses on building machine learning models for symptom-based disease classif
 
 ## 👤 Team Details
 **Team – AAI500 (Final Project)**  
-- **Ved Prakash Dwivedi**
-- **Bharath TS**
-- **Manu Malla**
+### Ved Prakash Dwivedi
+- **Contributions:**
+  - Led project identification and detailed task planning
+  - Performed Exploratory Data Analysis (EDA)
+  - Designed and implemented deep learning models using LSTM & GRU architectures
+  - Authored comprehensive documentation for LSTM & GRU models
+  - Managed Git branches, merges, and version control
+  - Contributed to conclusions and compiled the final project report
+
+### Bharath TS
+- **Contributions:**
+  - Assisted in project identification and scope definition
+  - Developed deep learning model using BERT architecture
+  - Authored detailed documentation for BERT model development
+  - Contributed to conclusions and final project report
+
+### Manu Malla
+- **Contributions:**
+  - Participated in project identification and planning
+  - Conducted Exploratory Data Analysis (EDA)
+  - Developed statistical models for symptom-to-disease classification
+  - Prepared project documentation for statistical modeling tasks
+  - Contributed to conclusions and final project report
 
 > **Note:** This assignment has [Turnitin](https://guides.turnitin.com/hc/en-us/articles/24008452116749-Welcome-to-Turnitin-Guides) enabled for plagiarism check. Use the Draft Coach extension in Google Docs to review before submission.
 
@@ -51,6 +72,7 @@ Module 2/
 
 ## 📅 Project Timeline
 **Module 2 (Week 2)** – Project initialization and setup  
+**Module 3 (Week 3)** – Project Proposal  
 **Module 4 (Week 4)** – Dataset selection and initial analysis  
 **Module 7 (Week 7)** – Final deliverables submission
 
