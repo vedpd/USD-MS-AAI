@@ -1,0 +1,20 @@
+{
+  "timestamp": "2025-09-13T16:30:56.675209",
+  "true_positives": 1,
+  "false_positives": 0,
+  "false_negatives": 0,
+  "details": [
+    {
+      "ticker": "TSLA",
+      "predicted_move": 7.356092584909457,
+      "actual_move": 7.356092584909457,
+      "category": "unknown",
+      "correct_direction": true,
+      "reasons": []
+    }
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1_score": 1.0,
+  "accuracy": 1.0
+}

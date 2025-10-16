@@ -1,0 +1,15 @@
+{
+  "earnings": [],
+  "macro": [],
+  "news": [],
+  "unknown": [
+    {
+      "ticker": "TSLA",
+      "move_type": "gainer",
+      "pct_change": 7.356092584909457,
+      "analysis_type": "UNKNOWN",
+      "confidence": 0.0,
+      "reasons": []
+    }
+  ]
+}

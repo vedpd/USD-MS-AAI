@@ -1,0 +1,99 @@
+/* Dark theme overrides */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #dee2e6;
+    --bs-card-bg: #2c3034;
+    --bs-border-color: #373b3e;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: var(--bs-card-bg);
+    border-color: var(--bs-border-color);
+    color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .table {
+    --bs-table-bg: var(--bs-card-bg);
+    --bs-table-color: var(--bs-body-color);
+    --bs-table-striped-bg: rgba(255, 255, 255, 0.03);
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.05);
+}
+
+[data-bs-theme="dark"] .text-muted {
+    color: #9ca3af !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary {
+    --bs-btn-color: #9ca3af;
+    --bs-btn-border-color: #4b5563;
+    --bs-btn-hover-bg: #374151;
+    --bs-btn-hover-border-color: #4b5563;
+    --bs-btn-active-bg: #4b5563;
+    --bs-btn-active-border-color: #4b5563;
+}
+
+[data-bs-theme="dark"] .form-control, 
+[data-bs-theme="dark"] .form-select {
+    background-color: #1e1e1e;
+    border-color: #4b5563;
+    color: #f3f4f6;
+}
+
+[data-bs-theme="dark"] .form-control:focus, 
+[data-bs-theme="dark"] .form-select:focus {
+    background-color: #1e1e1e;
+    color: #f3f4f6;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
+[data-bs-theme="dark"] .card-header {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom-color: var(--bs-border-color);
+}
+
+[data-bs-theme="dark"] .nav-tabs .nav-link {
+    color: #9ca3af;
+}
+
+[data-bs-theme="dark"] .nav-tabs .nav-link.active {
+    background-color: var(--bs-card-bg);
+    border-color: var(--bs-border-color) var(--bs-border-color) var(--bs-card-bg);
+    color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .nav-tabs {
+    border-bottom-color: var(--bs-border-color);
+}
+
+/* Chart container background */
+[data-bs-theme="dark"] #price-chart-container {
+    background-color: #1e1e1e;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+/* Tooltip styling */
+[data-bs-theme="dark"] .tooltip {
+    --bs-tooltip-bg: #1f2937;
+    --bs-tooltip-color: #f3f4f6;
+}
+
+/* Custom scrollbar for dark theme */
+[data-bs-theme="dark"]::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-bs-theme="dark"]::-webkit-scrollbar-track {
+    background: #2d3748;
+}
+
+[data-bs-theme="dark"]::-webkit-scrollbar-thumb {
+    background: #4a5568;
+    border-radius: 4px;
+}
+
+[data-bs-theme="dark"]::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
