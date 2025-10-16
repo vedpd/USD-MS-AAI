@@ -1,0 +1,48 @@
+============================================================
+MARKET MOVERS DAILY BRIEF - 2025-09-13
+============================================================
+
+MARKET OVERVIEW
+------------------------------------------------------------
+Significant Gainers: 1
+Significant Losers: 0
+Market Health: BULLISH
+
+TOP MOVERS
+------------------------------------------------------------
+1. TSLA: ↑ GAIN 7.36% ($395.94)
+
+MARKET SENTIMENT
+------------------------------------------------------------
+Overall Sentiment: BULLISH (0.60)
+
+MOVEMENT ANALYSIS
+------------------------------------------------------------
+UNKNOWN MOVEMENTS (1):
+- TSLA: GAIN 7.36%
+
+
+KEY MARKET NEWS
+------------------------------------------------------------
+1. Tesla stock rises over 10% in past week
+   (TSLA - Crypto Briefing)
+
+2. Gary Black Flags Two Key Upside Triggers For TSLA Stock Despite Valuation Concerns
+   (TSLA - Biztoc.com)
+
+3. Tesla Stock Breaks Out Past Buy Point. It's Not About EVs
+   (TSLA - Biztoc.com)
+
+
+ANALYSIS EVALUATION
+------------------------------------------------------------
+Model Performance (based on 1 samples):
+- Accuracy: 1.00
+- Precision: 1.00
+- Recall: 1.00
+- F1 Score: 1.00
+
+============================================================
+Generated at: 2025-09-13 22:00:56
+Data sources: Yahoo Finance, NewsAPI
+============================================================

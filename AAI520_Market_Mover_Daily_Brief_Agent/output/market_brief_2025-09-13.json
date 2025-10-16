@@ -1,0 +1,118 @@
+{
+  "date": "2025-09-13",
+  "overview": {
+    "total_gainers": 1,
+    "total_losers": 0,
+    "market_breadth": {
+      "advance_decline_ratio": Infinity,
+      "market_health": "bullish"
+    },
+    "notable_movers": [
+      {
+        "ticker": "TSLA",
+        "rank": 1,
+        "type": "gainer",
+        "pct_change": 7.36,
+        "close": 395.94
+      }
+    ]
+  },
+  "top_gainers": [
+    {
+      "ticker": "TSLA",
+      "price": 395.94,
+      "pct_change": 7.36,
+      "volume": 167721600,
+      "potential_reasons": [
+        {
+          "headline": "GraniteShares 2x Short TSLA Daily ETF (NASDAQ:TSDD) Sees Significant Increase in Short Interest",
+          "source": "ETF Daily News",
+          "sentiment": "neutral"
+        },
+        {
+          "headline": "Tesla stock rises over 10% in past week",
+          "source": "Crypto Briefing",
+          "sentiment": "positive"
+        }
+      ],
+      "sector": "Consumer Cyclical"
+    }
+  ],
+  "top_losers": [],
+  "market_sentiment": {
+    "score": 0.6,
+    "sentiment": "bullish",
+    "factors_considered": [
+      "price_movements",
+      "news_sentiment"
+    ]
+  },
+  "key_news": [
+    {
+      "headline": "Tesla stock rises over 10% in past week",
+      "source": "Crypto Briefing",
+      "tickers": [
+        "TSLA"
+      ],
+      "published_at": "2025-09-12T13:57:57Z",
+      "url": "https://cryptobriefing.com/tesla-stock-rises-over-10-percent-past-week/"
+    },
+    {
+      "headline": "Gary Black Flags Two Key Upside Triggers For TSLA Stock Despite Valuation Concerns",
+      "source": "Biztoc.com",
+      "tickers": [
+        "TSLA"
+      ],
+      "published_at": "2025-09-12T13:38:35Z",
+      "url": "https://biztoc.com/x/9303af14a055ec99"
+    },
+    {
+      "headline": "Tesla Stock Breaks Out Past Buy Point. It's Not About EVs",
+      "source": "Biztoc.com",
+      "tickers": [
+        "TSLA"
+      ],
+      "published_at": "2025-09-12T14:13:02Z",
+      "url": "https://biztoc.com/x/91e1e8cb5cda8ec3"
+    },
+    {
+      "headline": "Tesla Stock Just Became A Buy Again, Finally: Expert",
+      "source": "Biztoc.com",
+      "tickers": [
+        "TSLA"
+      ],
+      "published_at": "2025-09-12T15:53:55Z",
+      "url": "https://biztoc.com/x/e27fd1c18a612ec8"
+    },
+    {
+      "headline": "GraniteShares 2x Short TSLA Daily ETF (NASDAQ:TSDD) Sees Significant Increase in Short Interest",
+      "source": "ETF Daily News",
+      "tickers": [
+        "TSLA"
+      ],
+      "published_at": "2025-09-12T07:40:48Z",
+      "url": "https://www.etfdailynews.com/2025/09/12/graniteshares-2x-short-tsla-daily-etf-nasdaqtsdd-sees-significant-increase-in-short-interest/"
+    }
+  ],
+  "routed_movements": {
+    "earnings": [],
+    "macro": [],
+    "news": [],
+    "unknown": [
+      {
+        "ticker": "TSLA",
+        "move_type": "gainer",
+        "pct_change": 7.356092584909457,
+        "analysis_type": "UNKNOWN",
+        "confidence": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  "analysis_summary": {
+    "unknown": {
+      "count": 1,
+      "avg_confidence": 0.0
+    }
+  }
+}

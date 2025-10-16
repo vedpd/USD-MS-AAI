@@ -1,0 +1,36 @@
+[
+  {
+    "title": "META Reports Strong Quarterly Earnings",
+    "description": "META reports better-than-expected earnings, beating analyst estimates.",
+    "content": "META announced its quarterly earnings today, reporting strong growth across all business segments. The company's stock is up significantly in pre-market trading.",
+    "url": "https://example.com/news/meta-earnings",
+    "source": "Mock Financial News",
+    "published_at": "2025-09-13T16:27:47.103396Z",
+    "tickers": [
+      "META"
+    ]
+  },
+  {
+    "title": "Market Update: MSFT and GS Lead Tech Rally",
+    "description": "Tech stocks rally as MSFT and GS show strong performance.",
+    "content": "In today's trading session, technology stocks showed strong performance with MSFT and GS leading the charge. Analysts attribute this to positive market sentiment and strong earnings reports.",
+    "url": "https://example.com/news/tech-rally",
+    "source": "Mock Market Watch",
+    "published_at": "2025-09-13T14:27:47.103419Z",
+    "tickers": [
+      "MSFT",
+      "GS"
+    ]
+  },
+  {
+    "title": "AAPL Faces Regulatory Challenges",
+    "description": "AAPL stock drops amid new regulatory concerns.",
+    "content": "Shares of AAPL fell sharply today after reports of increased regulatory scrutiny. Analysts are watching the situation closely as it develops.",
+    "url": "https://example.com/news/aapl-regulatory",
+    "source": "Mock Business Daily",
+    "published_at": "2025-09-13T11:27:47.103438Z",
+    "tickers": [
+      "AAPL"
+    ]
+  }
+]
