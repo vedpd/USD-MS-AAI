@@ -32,6 +32,20 @@ class DataFetcher:
         self.news_cache = {}
         self.news_last_fetched = {}
         self.news_cache_ttl = 3600  # 1 hour in seconds
+        
+        # Initialize sentiment analyzer
+        self.sentiment_analyzer = None
+        self._init_sentiment_analyzer()
+    
+    def _init_sentiment_analyzer(self):
+        """Initialize the sentiment analyzer (lazy loading to avoid startup delays)"""
+        try:
+            from data_process.sentiment_analyzer import DistilBERTSentimentAnalyzer
+            self.sentiment_analyzer = DistilBERTSentimentAnalyzer()
+            logger.info("Sentiment analyzer initialized successfully")
+        except Exception as e:
+            logger.warning(f"Could not initialize sentiment analyzer: {str(e)}. Will use fallback method.")
+            self.sentiment_analyzer = None
     
     def get_stock_data(self) -> Tuple[List[Dict], List[Dict]]:
         """Fetch stock data for all configured tickers and identify top movers"""
@@ -116,11 +130,16 @@ class DataFetcher:
             # Return empty lists in case of error
             return [], []
     
-    def get_news(self) -> List[Dict]:
-        """Fetch market news from NewsAPI"""
+    def get_news(self, tickers: Optional[List[str]] = None) -> List[Dict]:
+        """Fetch market news from NewsAPI
+        
+        Args:
+            tickers: Optional list of ticker symbols to fetch news for.
+                    If None, fetches general market news.
+        """
         try:
-            # Check cache first
-            cache_key = 'market_news'
+            # Create cache key based on tickers
+            cache_key = f"news_{'_'.join(tickers)}" if tickers else 'market_news'
             current_time = datetime.now()
             
             if (cache_key in self.news_cache and 
@@ -131,49 +150,87 @@ class DataFetcher:
             # If not in cache or cache expired, fetch from API
             news_items = []
             
+            # Build search query
+            if tickers:
+                # Get company names for better search results
+                ticker_names = self._get_company_names(tickers)
+                # Build more specific query with stock/market context
+                company_query = ' OR '.join([f'"{name}"' for name in ticker_names[:3]])
+                query = f'({company_query}) AND (stock OR shares OR market OR trading OR price)'
+                logger.info(f"Fetching news for tickers {tickers} with query: {query}")
+            else:
+                query = 'stocks OR market'
+                logger.info(f"Fetching general market news with query: {query}")
+            
             # Try to get business news first
             try:
                 news = self.newsapi.get_everything(
-                    q='stocks OR market',
+                    q=query,
                     language='en',
                     sort_by='publishedAt',
-                    page_size=self.news_page_size,
+                    page_size=self.news_page_size * 2,  # Fetch more to filter
                     page=1
                 )
                 
                 if news['status'] == 'ok':
+                    # Collect all articles first
+                    articles_to_process = []
                     for article in news['articles']:
                         try:
-                            # Basic sentiment analysis (very simple approach)
+                            # Filter articles to ensure relevance
                             title = article['title'].lower()
-                            content = article.get('description', '').lower()
+                            description = article.get('description', '').lower()
                             
-                            # Simple keyword-based sentiment
-                            positive_words = ['up', 'rise', 'gain', 'surge', 'rally', 'positive', 'profit', 'growth']
-                            negative_words = ['down', 'fall', 'drop', 'plunge', 'decline', 'negative', 'loss', 'worry']
+                            # If we have specific tickers, verify article mentions them
+                            if tickers:
+                                ticker_names_lower = [name.lower() for name in self._get_company_names(tickers)]
+                                # Check if any company name or ticker is mentioned
+                                is_relevant = any(
+                                    name in title or name in description or 
+                                    ticker in title or ticker in description
+                                    for name, ticker in zip(ticker_names_lower, tickers)
+                                )
+                                
+                                # Skip if not relevant to our tickers
+                                if not is_relevant:
+                                    continue
                             
-                            score = 0
-                            for word in positive_words:
-                                if word in title or word in content:
-                                    score += 1
-                            
-                            for word in negative_words:
-                                if word in title or word in content:
-                                    score -= 1
-                            
-                            # Normalize score to -1 to 1 range
-                            sentiment = max(-1, min(1, score / 3))
-                            
-                            news_items.append({
+                            articles_to_process.append({
                                 'title': article['title'],
                                 'source': article['source']['name'],
                                 'published_at': article['publishedAt'],
                                 'url': article['url'],
-                                'sentiment': sentiment
+                                'description': article.get('description', '')
                             })
+                            
+                            # Stop if we have enough relevant articles
+                            if len(articles_to_process) >= self.news_page_size:
+                                break
+                                
                         except Exception as e:
-                            logger.warning(f"Error processing news article: {str(e)}")
+                            logger.warning(f"Error collecting news article: {str(e)}")
                             continue
+                    
+                    # Log filtering results
+                    if tickers:
+                        logger.info(f"Found {len(articles_to_process)} relevant articles after filtering for {tickers}")
+                    
+                    # Perform sentiment analysis on all articles
+                    if articles_to_process:
+                        sentiments = self._analyze_news_sentiment(articles_to_process)
+                        
+                        # Combine articles with sentiment results
+                        for article, sentiment_data in zip(articles_to_process, sentiments):
+                            news_items.append({
+                                'title': article['title'],
+                                'source': article['source'],
+                                'published_at': article['published_at'],
+                                'url': article['url'],
+                                'sentiment': sentiment_data['sentiment'],
+                                'sentiment_score': sentiment_data['score'],
+                                'positive_score': sentiment_data.get('positive_score', 0),
+                                'negative_score': sentiment_data.get('negative_score', 0)
+                            })
             except Exception as e:
                 logger.error(f"Error fetching news from NewsAPI: {str(e)}")
                 # Fall back to mock news if API fails
@@ -190,6 +247,106 @@ class DataFetcher:
             # Fall back to mock news in case of error
             return self._get_mock_news()
     
+    def _get_company_names(self, tickers: List[str]) -> List[str]:
+        """Get company names from ticker symbols for better news search"""
+        ticker_to_name = {
+            'AAPL': 'Apple',
+            'MSFT': 'Microsoft',
+            'GOOGL': 'Google',
+            'AMZN': 'Amazon',
+            'META': 'Meta',
+            'TSLA': 'Tesla',
+            'NVDA': 'NVIDIA',
+            'JPM': 'JPMorgan',
+            'V': 'Visa',
+            'JNJ': 'Johnson',
+            'NFLX': 'Netflix',
+            'AMD': 'AMD',
+            'INTC': 'Intel',
+            'WMT': 'Walmart'
+        }
+        return [ticker_to_name.get(t, t) for t in tickers]
+    
+    def get_ticker_news(self, ticker: str) -> List[Dict]:
+        """Fetch news for a specific ticker symbol
+        
+        Args:
+            ticker: Stock ticker symbol (e.g., 'AAPL')
+            
+        Returns:
+            List of news articles with sentiment analysis
+        """
+        return self.get_news(tickers=[ticker])
+    
+    def _analyze_news_sentiment(self, articles: List[Dict]) -> List[Dict]:
+        """Analyze sentiment for news articles using DistilBERT or fallback method"""
+        sentiments = []
+        
+        if self.sentiment_analyzer:
+            try:
+                # Use DistilBERT sentiment analyzer
+                texts = [f"{article['title']}. {article.get('description', '')}" for article in articles]
+                results = self.sentiment_analyzer.analyze_sentiment(texts)
+                
+                for idx, row in results.iterrows():
+                    sentiment_label = row['sentiment']
+                    positive_score = row.get('positive_score', 0)
+                    negative_score = row.get('negative_score', 0)
+                    
+                    # Convert to sentiment label and score
+                    if sentiment_label == 'positive':
+                        sentiment = 'positive'
+                        score = positive_score
+                    elif sentiment_label == 'negative':
+                        sentiment = 'negative'
+                        score = negative_score
+                    else:
+                        sentiment = 'neutral'
+                        score = 0.5
+                    
+                    sentiments.append({
+                        'sentiment': sentiment,
+                        'score': round(score, 3),
+                        'positive_score': round(positive_score, 3),
+                        'negative_score': round(negative_score, 3)
+                    })
+                
+                return sentiments
+                
+            except Exception as e:
+                logger.warning(f"Error using sentiment analyzer: {str(e)}. Falling back to keyword-based method.")
+        
+        # Fallback: Simple keyword-based sentiment analysis
+        for article in articles:
+            title = article['title'].lower()
+            content = article.get('description', '').lower()
+            
+            # Simple keyword-based sentiment
+            positive_words = ['up', 'rise', 'gain', 'surge', 'rally', 'positive', 'profit', 'growth', 'bullish', 'strong']
+            negative_words = ['down', 'fall', 'drop', 'plunge', 'decline', 'negative', 'loss', 'worry', 'bearish', 'weak']
+            
+            pos_count = sum(1 for word in positive_words if word in title or word in content)
+            neg_count = sum(1 for word in negative_words if word in title or word in content)
+            
+            if pos_count > neg_count:
+                sentiment = 'positive'
+                score = min(0.5 + (pos_count * 0.1), 0.9)
+            elif neg_count > pos_count:
+                sentiment = 'negative'
+                score = min(0.5 + (neg_count * 0.1), 0.9)
+            else:
+                sentiment = 'neutral'
+                score = 0.5
+            
+            sentiments.append({
+                'sentiment': sentiment,
+                'score': round(score, 3),
+                'positive_score': round(pos_count / max(pos_count + neg_count, 1), 3),
+                'negative_score': round(neg_count / max(pos_count + neg_count, 1), 3)
+            })
+        
+        return sentiments
+    
     def _get_mock_news(self) -> List[Dict]:
         """Generate mock news data as fallback"""
         mock_news = [
@@ -197,19 +354,28 @@ class DataFetcher:
                 'title': 'Stocks Rally as Market Gains Momentum',
                 'source': 'Financial Times',
                 'published_at': datetime.utcnow().isoformat() + 'Z',
-                'sentiment': 0.8
+                'sentiment': 'positive',
+                'sentiment_score': 0.85,
+                'positive_score': 0.85,
+                'negative_score': 0.15
             },
             {
                 'title': 'Tech Stocks Show Mixed Results in After-Hours Trading',
                 'source': 'MarketWatch',
                 'published_at': (datetime.utcnow() - timedelta(hours=2)).isoformat() + 'Z',
-                'sentiment': 0.1
+                'sentiment': 'neutral',
+                'sentiment_score': 0.5,
+                'positive_score': 0.5,
+                'negative_score': 0.5
             },
             {
                 'title': 'Investors Cautious as Market Volatility Rises',
                 'source': 'Bloomberg',
                 'published_at': (datetime.utcnow() - timedelta(hours=4)).isoformat() + 'Z',
-                'sentiment': -0.5
+                'sentiment': 'negative',
+                'sentiment_score': 0.75,
+                'positive_score': 0.25,
+                'negative_score': 0.75
             }
         ]
         return mock_news

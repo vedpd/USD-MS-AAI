@@ -1,0 +1,10 @@
+rank,symbol,type,price,change_percent,volume,sector
+1,V,loser,335.4,-2.78,6231200,Financial Services
+2,JPM,loser,298.54,-2.23,10526600,Financial Services
+3,TSLA,loser,428.75,-1.38,76830300,Consumer Cyclical
+4,META,loser,712.07,-0.76,8983400,Technology
+5,AMZN,loser,214.47,-0.56,42270000,Consumer Cyclical
+6,AAPL,loser,247.45,-0.32,39698000,Technology
+7,NVDA,loser,181.81,-0.23,179045700,Technology
+8,MSFT,loser,511.61,-0.19,15518700,Technology
+9,GOOGL,loser,251.46,-0.12,27955300,Technology

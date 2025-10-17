@@ -74,8 +74,17 @@ def fetch_market_data():
                 {'symbol': 'META', 'price': 180.50, 'change': -2.1, 'volume': 3000000}
             ]
         
-        # Fetch news
-        news = data_fetcher.get_news()
+        # Fetch news for top movers (gainers and losers)
+        # Get tickers from top gainers and losers
+        top_tickers = []
+        if gainers:
+            top_tickers.extend([g['symbol'] for g in gainers[:3]])  # Top 3 gainers
+        if losers:
+            top_tickers.extend([l['symbol'] for l in losers[:2]])  # Top 2 losers
+        
+        # Fetch news related to these tickers
+        news = data_fetcher.get_news(tickers=top_tickers if top_tickers else None)
+        
         if not news:
             news = [
                 {
@@ -83,7 +92,11 @@ def fetch_market_data():
                     'description': 'Stocks showed mixed results in today\'s trading session...',
                     'url': '#',
                     'publishedAt': datetime.now().isoformat(),
-                    'source': {'name': 'Market News'}
+                    'source': {'name': 'Market News'},
+                    'sentiment': 'neutral',
+                    'sentiment_score': 0.5,
+                    'positive_score': 0.5,
+                    'negative_score': 0.5
                 }
             ]
         
@@ -167,6 +180,28 @@ def get_market_data():
     with data_lock:
         return jsonify(market_data)
 
+@app.route('/api/ticker-news')
+def get_ticker_news():
+    """API endpoint to fetch news for a specific ticker with sentiment analysis"""
+    ticker = request.args.get('ticker', '').upper()
+    
+    if not ticker:
+        return jsonify({'error': 'Ticker parameter is required'}), 400
+    
+    try:
+        # Fetch news for the specific ticker
+        news = data_fetcher.get_ticker_news(ticker)
+        
+        return jsonify({
+            'ticker': ticker,
+            'news': news,
+            'count': len(news)
+        })
+        
+    except Exception as e:
+        app.logger.error(f"Error fetching news for {ticker}: {str(e)}")
+        return jsonify({'error': 'Failed to fetch ticker news'}), 500
+
 @socketio.on('connect')
 def handle_connect():
     """Handle new WebSocket connection"""
@@ -198,33 +233,44 @@ def handle_update_request():
         with data_lock:
             socketio.emit('market_update', market_data)
 
-if __name__ == '__main__':
+# Initialize data and background thread when module is loaded
+def initialize_dashboard():
+    """Initialize the dashboard with data and background thread"""
     try:
         # Fetch initial data
-        print("Fetching initial market data...")
+        logger.info("Fetching initial market data...")
         initial_data = fetch_market_data()
         with data_lock:
+            global market_data
             market_data = initial_data
-            print(f"Initial data: {market_data}")
+            logger.info(f"Initial data loaded: {len(market_data.get('gainers', []))} gainers, {len(market_data.get('losers', []))} losers")
         
         # Start background thread
-        print("Starting background thread...")
+        logger.info("Starting background thread...")
         thread = Thread(target=background_thread)
         thread.daemon = True
         thread.start()
+        logger.info("Dashboard initialized successfully")
         
+    except Exception as e:
+        logger.error(f"Error initializing dashboard: {str(e)}")
+
+# Initialize when module is imported
+initialize_dashboard()
+
+if __name__ == '__main__':
+    try:
         # Run the app
-        print("Starting Socket.IO server...")
+        logger.info("Starting Socket.IO server...")
         socketio.run(app, 
                     host='0.0.0.0', 
                     port=5000, 
                     debug=True, 
                     use_reloader=False,
                     allow_unsafe_werkzeug=True)
-        print("Press Ctrl+C to stop")
         
     except KeyboardInterrupt:
-        print("\nShutting down...")
+        logger.info("\nShutting down...")
     except Exception as e:
-        print(f"Error: {str(e)}")
+        logger.error(f"Error: {str(e)}")
         raise

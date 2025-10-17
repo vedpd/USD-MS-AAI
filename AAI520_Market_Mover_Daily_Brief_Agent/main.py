@@ -17,15 +17,15 @@ if __name__ == '__main__':
     print("Starting Market Movers Dashboard...")
     print("=" * 60)
     print("\nDashboard will be available at:")
-    print("  http://localhost:5000")
-    print("  http://127.0.0.1:5000")
+    print("  http://localhost:5001")
+    print("  http://127.0.0.1:5001")
     print("\nPress Ctrl+C to stop the server\n")
     print("=" * 60)
     
     # Run the dashboard
     socketio.run(app, 
                 host='0.0.0.0', 
-                port=5000, 
+                port=5001, 
                 debug=True, 
                 use_reloader=False,
                 allow_unsafe_werkzeug=True)
