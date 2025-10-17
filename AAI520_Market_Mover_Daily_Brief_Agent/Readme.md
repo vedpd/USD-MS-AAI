@@ -9,6 +9,13 @@ A sophisticated web dashboard that tracks stock market movements in real-time an
 ![PyTorch](https://img.shields.io/badge/pytorch-2.2.2-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+## 📊 Architecture Composition
+
+**Hybrid Agentic Architecture:**
+- 🤖 **36.0% Agent Functions** - Modern agentic architecture with 15 specialized agents
+- 🔄 **13.7% Workflow Patterns** - Intelligent routing & continuous learning
+- 💻 **50.3% Core Business Logic** - Solid traditional foundation
+
 ---
 
 ## ✨ Features
