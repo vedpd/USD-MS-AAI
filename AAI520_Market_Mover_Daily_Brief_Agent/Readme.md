@@ -907,6 +907,106 @@ if 'evaluation' in brief:
 
 ---
 
+## Team Contributions
+
+**Team Details - AAI520 (Final Project)**
+
+This project was developed collaboratively by three team members, with work distributed equally across all major components.
+
+---
+
+### Ved Prakash Dwivedi
+
+**Core Responsibilities:**
+- **Data Fetching Module** - Designed and implemented the complete data fetching architecture
+  - Yahoo Finance integration (`fetch_prices.py`)
+  - NewsAPI integration (`fetch_news.py`)
+  - Main data fetcher orchestration (`data_fetcher.py`)
+  - Rate limiting and caching mechanisms
+- **Testing Framework** - Developed comprehensive testing suite
+  - Sentiment analyzer tests (`test_sentiment.py`)
+  - Live data validation (`test_live_data.py`)
+  - Dashboard verification (`verify_dashboard.py`)
+- **Environment Configuration** - Set up project configuration
+  - Environment variables management (`.env`, `.env.template`)
+  - Dependency management (`requirements.txt`)
+
+**Key Contributions:**
+- 779 lines of data fetching code
+- 290 lines of testing code
+- API integration and error handling
+- Real-time data pipeline architecture
+
+---
+
+### Anugrah Rastogi
+
+**Core Responsibilities:**
+- **Agentic Workflow System** - Architected the 15-agent workflow
+  - LangGraph workflow definition (`agentic_flow.py` - 637 lines)
+  - Brief generation orchestration (`generate_brief.py` - 381 lines)
+  - Workflow visualization (`visualize_agentic_flow.py` - 264 lines)
+  - Interactive HTML diagram (`agentic_flow.html`)
+- **Evaluation & Optimization** - Built continuous learning system
+  - Performance tracking and metrics
+  - Weight optimization algorithm
+  - Evaluation data management
+- **Documentation** - Created comprehensive project documentation
+  - README.md with Mermaid diagrams
+  - AGENTIC_WORKFLOW_V3.1.md (detailed workflow)
+  - Architecture composition analysis
+
+**Key Contributions:**
+- 1,282 lines of agentic workflow code
+- 15 specialized agent implementations
+- Continuous learning and evaluation system
+- Complete project documentation
+
+---
+
+### Manu Malla
+
+**Core Responsibilities:**
+- **Data Processing Module** - Implemented intelligent data processing
+  - Sentiment analysis with DistilBERT (`sentiment_analyzer.py`)
+  - Movement identification (`identify_movers.py`)
+  - Routing logic (`routing.py`)
+  - Evaluator system (`evaluator.py`)
+- **Dashboard & Visualization** - Built the complete web interface
+  - Flask dashboard (`simple_dashboard.py` - 276 lines)
+  - Real-time WebSocket integration
+  - Interactive charts and UI components
+  - Responsive design with Bootstrap 5
+- **AI/ML Integration** - Integrated machine learning capabilities
+  - DistilBERT model setup and optimization
+  - Apple MPS acceleration
+  - Sentiment confidence scoring
+
+**Key Contributions:**
+- 731 lines of data processing code
+- 276 lines of visualization code
+- AI-powered sentiment analysis
+- Real-time dashboard with WebSocket support
+
+---
+
+### Collaborative Work
+
+**All team members contributed to:**
+- System architecture design
+- Code reviews and debugging
+- Integration testing
+- Performance optimization
+- Documentation refinement
+
+**Project Statistics:**
+- **Total Code:** 3,567 lines of Python
+- **Architecture:** 36% Agent Functions, 13.7% Workflow Patterns, 50.3% Core Logic
+- **Agents:** 15 specialized agents
+- **Technologies:** Flask, PyTorch, DistilBERT, LangGraph, NewsAPI, yfinance
+
+---
+
 ##  Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
