@@ -1,4 +1,4 @@
-# 📈 Market Movers Dashboard
+#  Market Movers Dashboard
 
 > **AI-Powered Real-Time Stock Market Analysis with DistilBERT Sentiment Analysis**
 
@@ -9,37 +9,37 @@ A sophisticated web dashboard that tracks stock market movements in real-time an
 ![PyTorch](https://img.shields.io/badge/pytorch-2.2.2-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## 📊 Architecture Composition
+##  Architecture Composition
 
 **Hybrid Agentic Architecture:**
-- 🤖 **36.0% Agent Functions** - Modern agentic architecture with 15 specialized agents
-- 🔄 **13.7% Workflow Patterns** - Intelligent routing & continuous learning
-- 💻 **50.3% Core Business Logic** - Solid traditional foundation
+-  **36.0% Agent Functions** - Modern agentic architecture with 15 specialized agents
+-  **13.7% Workflow Patterns** - Intelligent routing & continuous learning
+-  **50.3% Core Business Logic** - Solid traditional foundation
 
 ---
 
-## ✨ Features
+##  Features
 
-### 📊 Real-Time Stock Data
+###  Real-Time Stock Data
 - **Live Market Updates** - Automatic refresh every 5 minutes
 - **Top Gainers & Losers** - Track the biggest movers in the market
 - **Price & Volume Data** - Real-time pricing with trading volumes
 - **WebSocket Integration** - Instant updates without page reload
 
-### 🤖 AI-Powered Sentiment Analysis
+###  AI-Powered Sentiment Analysis
 - **DistilBERT Model** - Fine-tuned for financial sentiment analysis
 - **Apple MPS Acceleration** - GPU-accelerated inference on Apple Silicon
 - **Confidence Scores** - Detailed positive/negative sentiment breakdown
 - **Visual Indicators** - Color-coded badges and progress bars
 - **Real-Time Analysis** - Every news article analyzed automatically
 
-### 📰 News Integration
+###  News Integration
 - **NewsAPI Integration** - Latest market news from multiple sources
 - **Automatic Categorization** - Sentiment-based article classification
 - **Source Attribution** - Track news sources and publication dates
 - **Direct Links** - Quick access to full articles
 
-### 🎨 Modern UI/UX
+###  Modern UI/UX
 - **Responsive Design** - Works on all screen sizes
 - **Bootstrap 5** - Clean, professional interface
 - **Real-Time Updates** - Live data without page refresh
@@ -47,7 +47,7 @@ A sophisticated web dashboard that tracks stock market movements in real-time an
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.12+
@@ -93,7 +93,7 @@ http://localhost:5001
 
 ---
 
-## 🎯 Usage
+##  Usage
 
 ### Running the Dashboard
 
@@ -136,7 +136,67 @@ YAHOO_FINANCE_TICKERS=AAPL,MSFT,GOOGL,AMZN,TSLA,META,NVDA,V,JNJ,WMT
 
 ---
 
-## 🏗️ Architecture
+## ️ Architecture
+
+###  Agentic Workflow (15 Agents)
+
+The Market Movers system uses a sophisticated **15-agent workflow** with intelligent routing, evaluation, and continuous learning capabilities.
+
+```mermaid
+graph TD
+    Start([Start]) --> A[ Data Fetcher Agent]
+    A --> B[ Market Analyzer Agent]
+    B --> C{ News Router}
+    
+    C -->|Fetch News| D[ News Fetcher Agent]
+    C -->|Skip News| E[ Sentiment Analyzer Agent]
+    D --> E
+    
+    E --> F[ Sector Analyzer Agent]
+    F --> G[ Insight Generator Agent]
+    G --> H[ Recommendation Agent]
+    H --> I[ Brief Compiler Agent]
+    
+    I --> J[ Previous Day Evaluator]
+    J --> K[ Performance Tracker]
+    K --> L[️ Weight Optimizer]
+    
+    L --> M{ Quality Evaluator}
+    M -->|Needs Refinement| G
+    M -->|Quality OK| N[ Output Generator]
+    
+    N --> O[ Finalizer Agent]
+    O --> End([End])
+    
+    style A fill:#e1f5ff,stroke:#0066cc,stroke-width:2px
+    style E fill:#fff4e1,stroke:#ff9900,stroke-width:2px
+    style J fill:#ffe1f5,stroke:#cc0066,stroke-width:2px
+    style K fill:#ffe1f5,stroke:#cc0066,stroke-width:2px
+    style L fill:#ffe1f5,stroke:#cc0066,stroke-width:2px
+    style M fill:#e1ffe1,stroke:#00cc66,stroke-width:2px
+    style C fill:#f0f0f0,stroke:#666666,stroke-width:2px
+    style N fill:#e1e1ff,stroke:#6666cc,stroke-width:2px
+```
+
+**Agent Categories:**
+-  **Data Agents** (Blue) - Fetch and analyze market data
+-  **AI Agents** (Orange) - Machine learning powered analysis
+-  **Evaluation Agents** (Pink) - Performance tracking & optimization
+-  **Quality Control** (Green) - Brief quality evaluation
+-  **Router Agents** (Gray) - Decision routing
+-  **Output Agents** (Purple) - Generate final outputs
+
+**Key Features:**
+-  **15 Specialized Agents** - Each with specific responsibilities
+-  **Intelligent Routing** - Dynamic decision-making (News Router, Quality Evaluator)
+-  **Continuous Learning** - Evaluation system improves predictions over time
+-  **Quality Refinement Loop** - Ensures high-quality output (max 2 iterations)
+
+**Additional Resources:**
+- [ View Detailed Workflow Documentation](AGENTIC_WORKFLOW_V3.1.md)
+- [View/Edit Interactive Diagram](https://mermaid.live/) - Open Mermaid Live Editor to customize the workflow diagram
+
+---
 
 ### Project Structure
 
@@ -192,7 +252,7 @@ market_movers/
 
 ---
 
-## 🛠️ Development Guide
+## ️ Development Guide
 
 ### Adding New Features
 
@@ -282,7 +342,7 @@ from data_fetch.data_fetcher import DataFetcher
 
 ### Module Capabilities
 
-#### 📥 Data Fetch Module
+####  Data Fetch Module
 - **Real-time stock prices** - Yahoo Finance API integration
 - **Market news** - NewsAPI with sentiment analysis
 - **Ticker-specific news** - Fetch news for individual stocks
@@ -290,7 +350,7 @@ from data_fetch.data_fetcher import DataFetcher
 - **Rate limit management** - Automatic retry with exponential backoff
 - **Error handling** - Graceful fallbacks for API failures
 
-#### ⚙️ Data Process Module
+#### ️ Data Process Module
 - **Top movers identification** - Automatic detection of gainers/losers
 - **Movement categorization** - Classify by earnings, macro, news
 - **Performance tracking** - Accuracy, precision, recall, F1 metrics
@@ -299,7 +359,7 @@ from data_fetch.data_fetcher import DataFetcher
 - **GPU acceleration** - Apple MPS support for faster inference
 - **Confidence scoring** - Detailed positive/negative breakdown (0-1 scale)
 
-#### 📊 Data Visualization Module
+####  Data Visualization Module
 - **Real-time updates** - WebSocket-based live data (5-minute intervals)
 - **Interactive charts** - Plotly.js candlestick visualizations
 - **Technical indicators** - Volume, SMA 20, SMA 50, RSI
@@ -332,7 +392,7 @@ def fetch_data():
 
 ---
 
-## 🤖 AI Sentiment Analysis
+##  AI Sentiment Analysis
 
 ### How It Works
 
@@ -365,7 +425,7 @@ def fetch_data():
 
 ---
 
-## 📊 Dashboard Features
+##  Dashboard Features
 
 ### Stock Cards
 - **Color-coded cards** - Green for gainers, red for losers
@@ -387,7 +447,7 @@ def fetch_data():
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 ### Run All Tests
 
@@ -402,12 +462,12 @@ python testing/verify_dashboard.py
 ### Expected Output
 
 ```
-✅ Sentiment Analyzer Test
+ Sentiment Analyzer Test
    - Model loaded successfully
    - Positive sentiment detected: 0.997
    - Negative sentiment detected: 0.978
 
-✅ Dashboard Verification
+ Dashboard Verification
    - Homepage accessible
    - API endpoints working
    - Stock data fetching
@@ -416,7 +476,7 @@ python testing/verify_dashboard.py
 
 ---
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### NumPy Compatibility Issue
 
@@ -467,7 +527,7 @@ pip list | grep -E "(numpy|torch)"
 
 ---
 
-## 📈 Performance
+##  Performance
 
 - **Response Time**: < 1 second for API calls
 - **Update Frequency**: Every 5 minutes
@@ -476,7 +536,7 @@ pip list | grep -E "(numpy|torch)"
 
 ---
 
-## 📊 Performance Metrics & Evaluation System
+##  Performance Metrics & Evaluation System
 
 ### Overview
 
@@ -580,7 +640,7 @@ The system includes an **automatic evaluation system** that tracks prediction ac
     "NVDA led with +3.45%"
   ],
   "recommendations": [
-    "✅ Bullish market - Consider long positions"
+    " Bullish market - Consider long positions"
   ],
   "evaluation": {
     "previous_date": "2025-10-16",
@@ -617,7 +677,7 @@ The system includes an **automatic evaluation system** that tracks prediction ac
 $ python generate_brief.py
 
 ======================================================================
-📊 MARKET MOVERS DAILY BRIEF GENERATOR
+ MARKET MOVERS DAILY BRIEF GENERATOR
 ======================================================================
 
 INFO:__main__:Evaluator initialized for performance tracking
@@ -627,52 +687,52 @@ INFO:data_fetch.data_fetcher:Found 6 gainers and 3 losers
 INFO:data_fetch.data_fetcher:Fetching news for tickers ['NVDA', 'GOOGL', 'AMZN', 'V', 'JPM']
 INFO:data_fetch.data_fetcher:Found 5 relevant articles after filtering
 
-INFO:__main__:✅ Evaluation complete
+INFO:__main__: Evaluation complete
 INFO:__main__:   Accuracy: 77.8%
 INFO:__main__:   Precision: 85.0%
 INFO:__main__:   Recall: 70.0%
-INFO:__main__:📊 Previous predictions accuracy: 77.8%
+INFO:__main__: Previous predictions accuracy: 77.8%
 
 INFO:__main__:Saving outputs...
-INFO:__main__:✅ Saved: output/market_brief_2025-10-17.json
-INFO:__main__:✅ Saved: output/market_brief_2025-10-17.md
-INFO:__main__:✅ Saved: output/movers_2025-10-17.csv
+INFO:__main__: Saved: output/market_brief_2025-10-17.json
+INFO:__main__: Saved: output/market_brief_2025-10-17.md
+INFO:__main__: Saved: output/movers_2025-10-17.csv
 INFO:__main__:Brief generation complete!
 
 ======================================================================
-📋 BRIEF SUMMARY
+ BRIEF SUMMARY
 ======================================================================
 
-🎯 Market Health: BULLISH
-📈 Gainers: 6
-📉 Losers: 3
+ Market Health: BULLISH
+ Gainers: 6
+ Losers: 3
 
-📊 Performance Metrics (Yesterday's Predictions):
+ Performance Metrics (Yesterday's Predictions):
    • Accuracy: 77.8%
    • Precision: 85.0%
    • Recall: 70.0%
    • F1 Score: 76.8%
-   • Trend: 📈 Improving (Historical avg: 73.5%)
+   • Trend:  Improving (Historical avg: 73.5%)
 
-🚀 Top 3 Gainers:
+ Top 3 Gainers:
    1. NVDA - $182.5 (+3.45%)
    2. GOOGL - $251.46 (+2.15%)
    3. AMZN - $214.47 (+1.82%)
 
-📉 Top 3 Losers:
+ Top 3 Losers:
    1. V - $335.4 (-2.78%)
    2. JPM - $298.54 (-2.23%)
    3. TSLA - $428.75 (-1.38%)
 
-💡 Key Insights:
+ Key Insights:
    • Market shows bullish sentiment with 6/9 stocks advancing
    • NVDA led with +3.45%
 
-🎯 Recommendations:
-   • ✅ Bullish market - Consider long positions
+ Recommendations:
+   •  Bullish market - Consider long positions
 
 ======================================================================
-✅ Brief generation complete! Check ./output/ for files.
+ Brief generation complete! Check ./output/ for files.
 ======================================================================
 ```
 
@@ -818,7 +878,7 @@ if 'evaluation' in brief:
 
 ---
 
-## 🔐 Security
+##  Security
 
 - API keys stored in `.env` (not in version control)
 - Environment variables loaded securely
@@ -827,7 +887,7 @@ if 'evaluation' in brief:
 
 ---
 
-## 🛣️ Roadmap
+## ️ Roadmap
 
 ### Planned Features
 - [ ] Historical price charts
@@ -841,18 +901,13 @@ if 'evaluation' in brief:
 
 ---
 
-## 📚 Documentation
+##  Documentation
 
-- [Deployment Guide](DEPLOYMENT_SUCCESS.md) - Production deployment
-- [Agentic Workflow v3.1](AGENTIC_WORKFLOW_V3.1.md) - Complete workflow with evaluator
-- [Evaluation Feature](EVALUATION_FEATURE.md) - Performance tracking guide
-- [Brief Generation Guide](BRIEF_GENERATION_GUIDE.md) - Daily brief generation
-- [Ticker News Feature](TICKER_NEWS_FEATURE.md) - Ticker-specific news
-- [API Documentation](docs/api.md) - REST API reference (coming soon)
+- [Agentic Workflow v3.1](AGENTIC_WORKFLOW_V3.1.md) - Complete 15-agent workflow with evaluator system
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -864,13 +919,13 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Hugging Face** - For the Transformers library and DistilBERT model
 - **NewsAPI** - For providing news data
@@ -879,16 +934,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-## 📞 Support
-
-For issues, questions, or suggestions:
-- Open an issue on GitHub
-- Check [Troubleshooting](#-troubleshooting) section
-- Review [Documentation](#-documentation)
-
----
-
-**Built with ❤️ using Flask, PyTorch, and DistilBERT**
+**Built with ️ using Flask, PyTorch, and DistilBERT**
 
 **Last Updated**: October 17, 2025  
 **Version**: 3.1 (AI-Powered with Continuous Learning)
