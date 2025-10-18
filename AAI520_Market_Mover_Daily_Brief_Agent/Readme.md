@@ -916,25 +916,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
----
-
-##  License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-##  Acknowledgments
-
-- **Hugging Face** - For the Transformers library and DistilBERT model
-- **NewsAPI** - For providing news data
-- **Yahoo Finance** - For stock market data
-- **Flask Team** - For the excellent web framework
-
----
-
-**Built with ️ using Flask, PyTorch, and DistilBERT**
-
-**Last Updated**: October 17, 2025  
-**Version**: 3.1 (AI-Powered with Continuous Learning)
