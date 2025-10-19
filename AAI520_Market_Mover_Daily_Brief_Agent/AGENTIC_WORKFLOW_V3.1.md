@@ -1,14 +1,13 @@
-# 🤖 Market Movers Agentic Workflow v3.1
+#  Market Movers Agentic Workflow v3.1
 
-## 🎉 NEW: With Evaluator Integration
+##  NEW: With Evaluator Integration
 
 **Version:** 3.1  
-**Updated:** October 17, 2025  
-**Status:** ✅ Production Ready with Continuous Learning
+**Updated:** October 17, 2025
 
 ---
 
-## 📊 Overview
+##  Overview
 
 The Market Movers system now includes **15 specialized agents** (up from 12) with a complete **evaluation and continuous learning system** that automatically tracks prediction accuracy and improves over time.
 
@@ -18,52 +17,52 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
 
 ### **3 New Evaluation Agents:**
 
-1. **📊 Previous Day Evaluator Agent**
+1. ** Previous Day Evaluator Agent**
    - Loads yesterday's predictions
    - Compares with today's actual movements
    - Identifies correct/incorrect predictions
 
-2. **📈 Performance Tracker Agent**
+2. ** Performance Tracker Agent**
    - Calculates accuracy metrics
    - Tracks precision, recall, F1 score
    - Maintains historical performance data
 
-3. **⚙️ Weight Optimizer Agent**
+3. **️ Weight Optimizer Agent**
    - Learns from evaluation results
    - Optimizes analysis weights
    - Improves prediction accuracy over time
 
 ---
 
-## 📊 Complete Agent List (15 Total)
+##  Complete Agent List (15 Total)
 
 ### **Core Workflow Agents (9):**
 
-1. **Data Fetcher Agent** 📥 - Fetches stock market data
-2. **Market Analyzer Agent** 📊 - Analyzes market health
-3. **News Router Agent** 🔀 - Routes news fetching decision
-4. **News Fetcher Agent** 📰 - Fetches ticker-specific news
-5. **Sentiment Analyzer Agent** 🤖 - AI sentiment analysis (DistilBERT)
-6. **Sector Analyzer Agent** 🏢 - Analyzes sector performance
-7. **Insight Generator Agent** 💡 - Generates key insights
-8. **Recommendation Agent** 🎯 - Creates recommendations
-9. **Brief Compiler Agent** 📝 - Compiles final brief
+1. **Data Fetcher Agent**  - Fetches stock market data
+2. **Market Analyzer Agent**  - Analyzes market health
+3. **News Router Agent**  - Routes news fetching decision
+4. **News Fetcher Agent**  - Fetches ticker-specific news
+5. **Sentiment Analyzer Agent**  - AI sentiment analysis (DistilBERT)
+6. **Sector Analyzer Agent**  - Analyzes sector performance
+7. **Insight Generator Agent**  - Generates key insights
+8. **Recommendation Agent**  - Creates recommendations
+9. **Brief Compiler Agent**  - Compiles final brief
 
 ### **Evaluation System Agents (3) - NEW:**
 
-10. **Previous Day Evaluator Agent** 📊 - Evaluates yesterday's predictions
-11. **Performance Tracker Agent** 📈 - Tracks accuracy metrics
-12. **Weight Optimizer Agent** ⚙️ - Optimizes analysis weights
+10. **Previous Day Evaluator Agent**  - Evaluates yesterday's predictions
+11. **Performance Tracker Agent**  - Tracks accuracy metrics
+12. **Weight Optimizer Agent** ️ - Optimizes analysis weights
 
 ### **Quality Control & Output Agents (3):**
 
-13. **Quality Evaluator Agent** ✓ - Evaluates brief quality
-14. **Output Generator Agent** 💾 - Saves outputs (JSON/MD/CSV)
-15. **Finalizer Agent** 🏁 - Final cleanup and summary
+13. **Quality Evaluator Agent**  - Evaluates brief quality
+14. **Output Generator Agent**  - Saves outputs (JSON/MD/CSV)
+15. **Finalizer Agent**  - Final cleanup and summary
 
 ---
 
-## 🔄 Updated Workflow
+##  Updated Workflow
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -80,7 +79,7 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
                          │
                          ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     [News Router] 🔀                                 │
+│                     [News Router]                                  │
 │                  Decision: Fetch news?                               │
 └─────────┬───────────────────────────────────────────┬───────────────┘
           │ YES                                       │ NO
@@ -92,7 +91,7 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
            └────────────────────┬───────────────────────┘
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                [Sentiment Analyzer Agent] 🤖                         │
+│                [Sentiment Analyzer Agent]                          │
 │           AI-powered sentiment analysis (DistilBERT)                 │
 └────────────────────────┬────────────────────────────────────────────┘
                          │
@@ -104,13 +103,13 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
                          │
                          ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                 [Insight Generator Agent] 💡                         │
+│                 [Insight Generator Agent]                          │
 │                  Generates key insights                              │
 └────────────────────────┬────────────────────────────────────────────┘
                          │
                          ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                [Recommendation Agent] 🎯                             │
+│                [Recommendation Agent]                              │
 │              Generates actionable recommendations                    │
 └────────────────────────┬────────────────────────────────────────────┘
                          │
@@ -122,23 +121,23 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
                          │
                          ▼
 ╔═════════════════════════════════════════════════════════════════════╗
-║              📊 EVALUATION SYSTEM (NEW in v3.1)                     ║
+║               EVALUATION SYSTEM (NEW in v3.1)                     ║
 ╠═════════════════════════════════════════════════════════════════════╣
 ║                                                                      ║
 ║  ┌─────────────────────────────────────────────────────────────┐   ║
-║  │         [Previous Day Evaluator Agent] 📊                   │   ║
+║  │         [Previous Day Evaluator Agent]                    │   ║
 ║  │    Evaluates yesterday's predictions vs actuals             │   ║
 ║  └──────────────────────┬──────────────────────────────────────┘   ║
 ║                         │                                            ║
 ║                         ▼                                            ║
 ║  ┌─────────────────────────────────────────────────────────────┐   ║
-║  │         [Performance Tracker Agent] 📈                      │   ║
+║  │         [Performance Tracker Agent]                       │   ║
 ║  │    Tracks accuracy, precision, recall, F1 score             │   ║
 ║  └──────────────────────┬──────────────────────────────────────┘   ║
 ║                         │                                            ║
 ║                         ▼                                            ║
 ║  ┌─────────────────────────────────────────────────────────────┐   ║
-║  │         [Weight Optimizer Agent] ⚙️                          │   ║
+║  │         [Weight Optimizer Agent] ️                          │   ║
 ║  │    Optimizes analysis weights based on accuracy             │   ║
 ║  └──────────────────────┬──────────────────────────────────────┘   ║
 ║                         │                                            ║
@@ -146,7 +145,7 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
                          │
                          ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                [Quality Evaluator Agent] ✓                           │
+│                [Quality Evaluator Agent]                            │
 │                 Evaluates brief quality                              │
 └─────────┬───────────────────────────────────────────┬───────────────┘
           │ NEEDS REFINEMENT                          │ QUALITY OK
@@ -170,7 +169,7 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
 
 ---
 
-## 🎯 Evaluation System Details
+##  Evaluation System Details
 
 ### **How It Works:**
 
@@ -202,7 +201,7 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
 
 ---
 
-## 📊 Evaluation Metrics
+##  Evaluation Metrics
 
 ### **Tracked Metrics:**
 
@@ -248,7 +247,7 @@ The Market Movers system now includes **15 specialized agents** (up from 12) wit
 
 ---
 
-## 🔧 Configuration
+##  Configuration
 
 ### **Enable/Disable Evaluation:**
 
@@ -266,7 +265,7 @@ brief = agent.generate_daily_brief(evaluate_previous=False)
 
 ---
 
-## 📁 File Structure
+##  File Structure
 
 ```
 output/
@@ -280,7 +279,7 @@ output/
 
 ---
 
-## 🚀 Running the System
+##  Running the System
 
 ### **Command Line:**
 
@@ -292,16 +291,16 @@ python generate_brief.py
 
 ```
 INFO:__main__:Evaluator initialized for performance tracking
-INFO:__main__:✅ Evaluation complete
+INFO:__main__: Evaluation complete
 INFO:__main__:   Accuracy: 77.8%
 INFO:__main__:   Precision: 85.0%
 INFO:__main__:   Recall: 70.0%
-INFO:__main__:📊 Previous predictions accuracy: 77.8%
+INFO:__main__: Previous predictions accuracy: 77.8%
 ```
 
 ---
 
-## 📊 Visualization Files
+##  Visualization Files
 
 ### **1. Python Visualization:**
 ```bash
@@ -321,29 +320,29 @@ Interactive HTML with:
 
 ---
 
-## 🎯 Key Benefits
+##  Key Benefits
 
 ### **For Users:**
-- ✅ Know system accuracy
-- ✅ Track improvement trends
-- ✅ Build confidence in predictions
-- ✅ Make informed decisions
+-  Know system accuracy
+-  Track improvement trends
+-  Build confidence in predictions
+-  Make informed decisions
 
 ### **For the System:**
-- ✅ Continuous learning
-- ✅ Automatic optimization
-- ✅ Adaptive to market changes
-- ✅ Self-improving accuracy
+-  Continuous learning
+-  Automatic optimization
+-  Adaptive to market changes
+-  Self-improving accuracy
 
 ### **For Production:**
-- ✅ Performance monitoring
-- ✅ Quality assurance
-- ✅ Accountability
-- ✅ Professional-grade metrics
+-  Performance monitoring
+-  Quality assurance
+-  Accountability
+-  Professional-grade metrics
 
 ---
 
-## 📈 Expected Performance
+##  Expected Performance
 
 ### **Week 1:**
 - Baseline accuracy: ~65-70%
@@ -362,21 +361,7 @@ Interactive HTML with:
 
 ---
 
-## 🔄 Comparison: v3.0 vs v3.1
-
-| Feature | v3.0 | v3.1 |
-|---------|------|------|
-| **Total Agents** | 12 | 15 |
-| **Evaluation** | ❌ None | ✅ Automatic |
-| **Performance Tracking** | ❌ None | ✅ Full metrics |
-| **Continuous Learning** | ❌ None | ✅ Weight optimization |
-| **Accuracy Metrics** | ❌ None | ✅ 4 metrics tracked |
-| **Historical Data** | ❌ None | ✅ Last 100 evaluations |
-| **Self-Improvement** | ❌ Static | ✅ Adaptive |
-
----
-
-## 📚 Related Documentation
+##  Related Documentation
 
 - `generate_brief.py` - Main implementation with evaluator
 - `data_process/evaluator.py` - Evaluation engine
@@ -387,16 +372,16 @@ Interactive HTML with:
 
 ---
 
-## ✅ Summary
+##  Summary
 
 ### **What Changed:**
 
-- ✅ **3 new agents** added to workflow
-- ✅ **Automatic evaluation** after brief compilation
-- ✅ **Performance tracking** with 4 key metrics
-- ✅ **Weight optimization** for continuous improvement
-- ✅ **Historical data** tracking (last 100 evaluations)
-- ✅ **Version bumped** to 3.1
+-  **3 new agents** added to workflow
+-  **Automatic evaluation** after brief compilation
+-  **Performance tracking** with 4 key metrics
+-  **Weight optimization** for continuous improvement
+-  **Historical data** tracking (last 100 evaluations)
+-  **Version bumped** to 3.1
 
 ### **What to Expect:**
 
@@ -415,23 +400,22 @@ python generate_brief.py
 
 ---
 
-## 🎉 Conclusion
+##  Conclusion
 
 **Your Market Movers system is now a self-improving, production-ready AI agent with:**
 
-- ✅ 15 specialized agents
-- ✅ Continuous learning capability
-- ✅ Automatic performance tracking
-- ✅ Weight optimization
-- ✅ Professional-grade metrics
-- ✅ Complete documentation
-- ✅ Interactive visualizations
+-  15 specialized agents
+-  Continuous learning capability
+-  Automatic performance tracking
+-  Weight optimization
+-  Professional-grade metrics
+-  Complete documentation
+-  Interactive visualizations
 
-**The system will get smarter with each trading day!** 🚀
+**The system will get smarter with each trading day!** 
 
 ---
 
 **Last Updated:** October 17, 2025  
 **Version:** 3.1  
-**Status:** ✅ Production Ready with Continuous Learning  
 **Architecture:** 15-Agent Workflow with Evaluation System
